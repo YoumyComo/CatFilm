@@ -1,0 +1,68 @@
+# Cat-Eye-Film
+## 开发环境
+1. `npm install`
+2. `npm start`
+3. 浏览器打开[http://localhost:8080](http://localhost:8080)
+4. `npm run mock` 打开`json-server`,模拟`ajax`数据
+
+
+## 生产环境布局
+1. `npm run build`
+2. 拷贝dist文件夹至服务器即可
+
+## 开发步骤
+
+### init 项目
+1.`npm init`
+
+
+### 安装配置webpack
+1. npm install --save-dev webpack@3  
+  (问什么+@3)
+
+2. 创建3个文件分别是：` webpack.common.config.js ` , `webpack.config.js` , `webpack.dev.config.js
+` webpack.common.config.js ` 公共配置包含，`entry`  `output` `module` `plugins`  `resolve`
+
+###  插件
+1.webpack
+  `npm install --save-dev webpack` 
+  `npm install webpack-cli -D`
+  `webpack-dev-server`
+  `webpack-merge`
+
+1. babel
+   `babel-core`,
+   `babel-loader`,
+   `babel-plugin-transform-runtime`,
+   `babel-polyfill`,
+   `babel-preset-es2015`,
+   `babel-preset-react`,
+   `babel-preset-stage-0`,
+
+2.bundle-loader
+
+3.css
+  `css-loader`
+  `style-loader`
+  `postcss-cssnext`
+  `postcss-loader`
+4.`url-loader`
+
+5.`clean-webpack-plugin`
+
+6.`extract-text-webpack-plugin`
+
+7.`html-webpack-plugin`
+
+8. `react-hot-loader`
+
+9.`uglifyjs-webpack-plugin`
+
+10.`json-server`
+
+11.`mockjs`
+
+### 创建src文件，含components,pages,redux,router,index.js,index.html
+
+
+### 创建
