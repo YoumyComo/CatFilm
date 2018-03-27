@@ -3,8 +3,6 @@
 1. `npm install`
 2. `npm start`
 3. 浏览器打开[http://localhost:8080](http://localhost:8080)
-4. `npm run mock` 打开`json-server`,模拟`ajax`数据
-
 
 ## 生产环境布局
 1. `npm run build`
@@ -12,11 +10,10 @@
 
 ## 开发步骤
 
-### init 项目
-1.`npm init`
-
-
+### init 
 ### 安装配置webpack
+### 创建src文件，含components,pages,redux,router,index.js,index.html
+### 流程：
 1. npm install --save-dev webpack@3  
   (问什么+@3)
 
@@ -27,10 +24,10 @@
 1.webpack
   `npm install --save-dev webpack` 
   `npm install webpack-cli -D`
-  `webpack-dev-server`
+  `webpack-dev-server`：`html-webpack-plugin`插件，将生产的js自动插入到html
   `webpack-merge`
 
-1. babel
+2. babel
    `babel-core`,
    `babel-loader`,
    `babel-plugin-transform-runtime`,
@@ -39,30 +36,66 @@
    `babel-preset-react`,
    `babel-preset-stage-0`,
 
-2.bundle-loader
+3.react
+npm install --save react react-dom
+编写react的js文件
 
-3.css
+5.react-router
+(1)npm install --save react-router-dom
+(2)创建一个组件App，使src/router/router.js与index.js关联一起
+(3)全局安装 webpack-dev-server
+`npm install webpack-dev-server@2 -g`
+  增加webpack-dev-server的配置,浏览器打开http://localhost:8080，现在我们可以点击首页,Page1了
+6.热替换
+目的：当我们修改代码的时候，浏览器会自动刷新
+（1）在命令中加--hot 或者 使用HotModuleReplacementPlugin插件
+if(module.hot){
+  module.hot.accept();
+}
+（2）react-hot-loader 
+.babelrc 增加 react-hot-loader/babel; webpack.dev.config.js入口增加react-hot-loader/patch
+
+7.css 优化
   `css-loader`
   `style-loader`
   `postcss-cssnext`
   `postcss-loader`
-4.`url-loader`
 
-5.`clean-webpack-plugin`
+8.`url-loader`
 
-6.`extract-text-webpack-plugin`
-
-7.`html-webpack-plugin`
-
-8. `react-hot-loader`
-
-9.`uglifyjs-webpack-plugin`
-
-10.`json-server`
-
-11.`mockjs`
-
-### 创建src文件，含components,pages,redux,router,index.js,index.html
+7.按需加载 bundle-loader
+每个页面都打包了自己单独的JS，在进入自己页面的时候才加载对应的js，那首屏加载就会很快
 
 
-### 创建
+9.缓存优化
+（1）添加hash
+ (2) 使用`html-webpack-plugin`插件，js文件自动加入html
+（3）提取公共部分 webpack4.0.0后有修改
+
+10.构建生产环境
+  （1）添加压缩`uglifyjs-webpack-plugin`
+  （2）指定环境
+  （3）优化缓存 `HashedModuleIdsPlugin`
+  （4）公共路径
+  （5）打包优化
+  使用clean-webpack-plugin，每次打包前自动清理下dist文件
+  （6）抽取CSS
+  使用`extract-text-webpack-plugin`，单独生成css文件，而不是打包进js 
+
+11.redux
+
+12.使用axios和middleware优化API请求
+
+
+
+
+
+
+
+### 待了解
+`json-server`
+`mockjs`
+`babel-plugin-transform-runtime`
+`babel-polyfill`
+`集成PostCSS`
+
